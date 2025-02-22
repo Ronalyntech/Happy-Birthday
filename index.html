@@ -41,19 +41,46 @@
             gap: 20px;
             margin-top: 20px;
         }
+       
         .gallery-photo {
             width: 250px;
-            
             border-radius: 10px;
             overflow: hidden;
             border: 3px solid white;
             box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
-            transform: scale(1);
-            transition: transform 0.3s ease-in-out;
+            transition: transform 1s;
+            position: relative;
         }
-        .gallery-photo:hover {
-            transform: scale(1.1);
+        .gallery-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.5s;
         }
+        .gallery-photo .hidden-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            font-size: 5em;
+            font-weight: bold;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.5s, transform 0.5s;
+        }
+        .gallery-photo.flipped {
+            transform: rotateY(180deg);
+        }
+        .gallery-photo.flipped img {
+            opacity: 0;
+        }
+        .gallery-photo.flipped .hidden-text {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1) rotateY(180deg);
+        }
+
+
+
         img {
             width: 100%;
             height: 100%;
@@ -128,6 +155,16 @@
                 document.body.appendChild(confetti);
             }
         });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll(".gallery-photo").forEach(photo => {
+                photo.addEventListener("click", () => {
+                    photo.classList.toggle("flipped");
+                });
+            });
+        });
+
+
     </script>
     <div class="container">
         <h1>Happy Birthday, My Love! 🎉💕</h1>
@@ -140,20 +177,21 @@
         May this year bring you endless joy, unforgettable memories, and all your heart desires. 
         Thank you for being you – beautiful, strong, and full of love. Happy birthday, my Rona 💖</p>
         <div class="photo-gallery">
-            <div class="gallery-photo"><img src="HappyBirthdayPhoto/photo1.jpg" alt="Photo 1"></div>
-            <div class="gallery-photo"><img src="HappyBirthdayPhoto/photo2.jpg" alt="Photo 2"></div>
-            <div class="gallery-photo"><img src="HappyBirthdayPhoto/photo3.jpg" alt="Photo 3"></div>
-            <div class="gallery-photo"><img src="HappyBirthdayPhoto/photo4.jpg" alt="Photo 4"></div>
-            <div class="gallery-photo"><img src="HappyBirthdayPhoto/photo5.jpg" alt="Photo 5"></div>
-            <div class="gallery-photo"><img src="HappyBirthdayPhoto/photo6.jpg" alt="Photo 6"></div>
-            <div class="gallery-photo"><img src="HappyBirthdayPhoto/photo7.jpg" alt="Photo 7"></div>
-            <div class="gallery-photo"><img src="HappyBirthdayPhoto/photo8.jpg" alt="Photo 8"></div>
-            <div class="gallery-photo"><img src="HappyBirthdayPhoto/photo9.jpg" alt="Photo 9"></div>
-            <div class="gallery-photo"><img src="HappyBirthdayPhoto/photo10.jpg" alt="Photo 10"></div>
+            <div class="gallery-photo"><img src="HappyBirthdayPhoto/photo1.jpg" alt="Photo 1"><div class="hidden-text">H</div></div>
+           
+            <div class="gallery-photo"><img src="HappyBirthdayPhoto/photo2.jpg" alt="Photo 2"><div class="hidden-text">A</div></div>
+            <div class="gallery-photo"><img src="HappyBirthdayPhoto/photo3.jpg" alt="Photo 3"><div class="hidden-text">P</div></div>
+            <div class="gallery-photo"><img src="HappyBirthdayPhoto/photo4.jpg" alt="Photo 4"><div class="hidden-text">P</div></div>
+            <div class="gallery-photo"><img src="HappyBirthdayPhoto/photo5.jpg" alt="Photo 5"><div class="hidden-text">Y</div></div>
+            <div class="gallery-photo"><img src="HappyBirthdayPhoto/photo6.jpg" alt="Photo 6"><div class="hidden-text">B</div></div>
+            <div class="gallery-photo"><img src="HappyBirthdayPhoto/photo7.jpg" alt="Photo 7"><div class="hidden-text">I</div></div>
+            <div class="gallery-photo"><img src="HappyBirthdayPhoto/photo8.jpg" alt="Photo 8"><div class="hidden-text">R</div></div>
+            <div class="gallery-photo"><img src="HappyBirthdayPhoto/photo9.jpg" alt="Photo 9"><div class="hidden-text">T</div></div>
+            <div class="gallery-photo"><img src="HappyBirthdayPhoto/photo10.jpg" alt="Photo 10"><div class="hidden-text">H</div></div>
         </div>
 	
-         <div style="
-    padding-top: 20px;"><img src="HappyBirthdayPhoto/Birth.jpg" alt="Photo 10"></div>
+         <div class="gallery-photo" style="
+    padding-top: 20px;width: 100%;height: auto;"><img   src="HappyBirthdayPhoto/Birth.jpg" alt="Photo 10"><div class="hidden-text">DAY</div></div>
 
     <p> </p>	
     </div>
